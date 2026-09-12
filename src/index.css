@@ -1,0 +1,422 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .font-serif-heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.02em;
+  }
+  .eyebrow-badge {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
+
+/* Soil dot matrix pattern */
+.soil-dot-grid {
+  background-image: radial-gradient(rgba(245, 200, 66, 0.18) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+
+/* Floating cloud animation */
+@keyframes float-cloud {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-6px) translateX(10px); }
+}
+.animate-float {
+  animation: float-cloud 8s ease-in-out infinite;
+}
+
+/* Biplane gliding flight path */
+@keyframes plane-glide {
+  0% {
+    transform: translate(-120px, 0px) rotate(1deg);
+  }
+  25% {
+    transform: translate(40px, -12px) rotate(-1deg);
+  }
+  50% {
+    transform: translate(180px, -4px) rotate(2deg);
+  }
+  75% {
+    transform: translate(320px, -16px) rotate(-1.5deg);
+  }
+  100% {
+    transform: translate(480px, 0px) rotate(1deg);
+  }
+}
+
+.animate-plane-glide {
+  animation: plane-glide 22s ease-in-out infinite alternate;
+}
+
+/* Continuous Marquee Ticker */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Windmill slow continuous spin */
+@keyframes windmill-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-windmill {
+  transform-origin: 30px 18px;
+  animation: windmill-spin 10s linear infinite;
+}
+
+/* Cloud drift across canvas */
+@keyframes cloud-drift-slow {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(25px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes cloud-drift-fast {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-35px); }
+  100% { transform: translateX(0); }
+}
+
+.animate-drift-slow {
+  animation: cloud-drift-slow 18s ease-in-out infinite;
+}
+
+.animate-drift-fast {
+  animation: cloud-drift-fast 12s ease-in-out infinite;
+}
+
+/* Propeller high-speed spin */
+@keyframes propeller-spin {
+  0% { transform: scaleY(1); opacity: 0.9; }
+  50% { transform: scaleY(0.15); opacity: 0.3; }
+  100% { transform: scaleY(1); opacity: 0.9; }
+}
+
+.animate-propeller {
+  transform-origin: center;
+  animation: propeller-spin 0.08s linear infinite;
+}
+
+/* IoT radar pulse */
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(79, 155, 70, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(79, 155, 70, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(79, 155, 70, 0);
+  }
+}
+
+.animate-radar-pulse {
+  animation: radar-pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+/* Star twinkle */
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.animate-twinkle {
+  animation: star-twinkle 3s ease-in-out infinite;
+}
+
+/* Range slider custom thumb */
+input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 9999px;
+  background: #e65c38;
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* Hide scrollbar for clean horizontal pill filters */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ThreeUI AnimatedTopDock and Shader Frame Integration */
+.shader-frame {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.navbar-top-dock-wrapper {
+  position: relative;
+  width: 100%;
+  height: 82px;
+  overflow: visible;
+  background: #e7f7fd;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-top-dock.animated-top-dock-component {
+  height: 82px !important;
+  min-height: 82px !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+.navbar-top-dock .atd-modern__stage,
+.navbar-top-dock .animated-top-dock-component__caption,
+.navbar-top-dock .atd-modern__aurora {
+  display: none !important;
+}
+
+.navbar-top-dock .atd-modern__bar {
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(231, 247, 253, 0.92)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 10px 25px -5px rgba(28, 55, 90, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.navbar-top-dock .atd-modern__brand {
+  color: #1c1917 !important;
+  font-weight: 700 !important;
+}
+
+.navbar-top-dock .atd-modern__mark {
+  box-shadow: 0 2px 8px rgba(230, 92, 56, 0.3) !important;
+}
+
+.navbar-top-dock .atd-modern__item {
+  color: #57534e !important;
+  transition: all 0.15s ease !important;
+}
+
+.navbar-top-dock .atd-modern__item:hover,
+.navbar-top-dock .atd-modern__item[data-dock-near="true"] {
+  color: #1c1917 !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+.navbar-top-dock .atd-modern__item[aria-pressed="true"] {
+  background: #e65c38 !important;
+  color: #ffffff !important;
+  border-color: #e65c38 !important;
+  box-shadow: 0 2px 8px rgba(230, 92, 56, 0.35) !important;
+}
+
+.navbar-top-dock .atd-modern__item[aria-pressed="true"] svg {
+  stroke: #ffffff !important;
+}
+
+.navbar-top-dock .atd-modern__ghost {
+  color: #44403c !important;
+  border-radius: 999px !important;
+  transition: all 0.15s ease !important;
+}
+
+.navbar-top-dock .atd-modern__ghost:hover {
+  color: #1c1917 !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+.navbar-top-dock .atd-modern__cta {
+  background: #e65c38 !important;
+  color: #ffffff !important;
+  border-color: #e65c38 !important;
+  box-shadow: 0 2px 8px rgba(230, 92, 56, 0.25) !important;
+  transition: all 0.15s ease !important;
+}
+
+.navbar-top-dock .atd-modern__cta:hover {
+  background: #cf4927 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(230, 92, 56, 0.35) !important;
+}
+
+.navbar-top-dock .atd-modern__cta svg {
+  stroke: #ffffff !important;
+}
+
+/* ============================================================
+   SHADOW LOADER & SKELETON SHIMMER SYSTEM
+   ============================================================ */
+
+@keyframes shadow-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes shadow-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.05), 0 0 0 rgba(230, 92, 56, 0);
+    border-color: rgba(231, 229, 228, 0.8);
+  }
+  50% {
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08), 0 0 16px rgba(230, 92, 56, 0.18);
+    border-color: rgba(230, 92, 56, 0.35);
+  }
+}
+
+@keyframes shadow-progress-glow {
+  0% {
+    width: 0%;
+    opacity: 1;
+  }
+  60% {
+    width: 80%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+.shadow-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(229, 231, 235, 0.7) 0%,
+    rgba(243, 244, 246, 0.95) 50%,
+    rgba(229, 231, 235, 0.7) 100%
+  );
+  background-size: 200% 100%;
+  animation: shadow-shimmer 1.8s ease-in-out infinite;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-skeleton-warm {
+  background: linear-gradient(
+    90deg,
+    rgba(245, 237, 226, 0.8) 0%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(245, 237, 226, 0.8) 100%
+  );
+  background-size: 200% 100%;
+  animation: shadow-shimmer 1.8s ease-in-out infinite;
+  box-shadow: inset 0 1px 3px rgba(120, 90, 40, 0.05);
+}
+
+.shadow-loader-card {
+  animation: shadow-glow-pulse 2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.shadow-loader-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shadow-shimmer 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.shadow-route-loader-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  z-index: 99999;
+  background: linear-gradient(90deg, #10b981, #e65c38, #f59e0b);
+  box-shadow: 0 0 12px rgba(230, 92, 56, 0.85), 0 0 6px rgba(16, 185, 129, 0.6);
+  pointer-events: none;
+  animation: shadow-progress-glow 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Loading Screen Rotating Agri & Logistics Facts */
+.loader-fact-box {
+  margin-top: 2rem;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.loader-fact-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ea580c;
+  background-color: rgba(234, 88, 12, 0.08);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(234, 88, 12, 0.15);
+}
+
+.loader-fact-text {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #292524;
+  min-height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fact-fade-in 0.4s ease-out;
+}
+
+@keyframes fact-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
