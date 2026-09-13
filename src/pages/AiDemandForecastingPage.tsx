@@ -259,6 +259,14 @@ export const AiDemandForecastingPage: React.FC<AiDemandForecastingProps> = ({ on
 
         {/* Action button & Live Status */}
         <div className="flex items-center gap-2 shrink-0">
+          {/* Live vs Simulation Mode Indicator */}
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border bg-white shadow-2xs">
+            <span className={`w-2 h-2 rounded-full ${aiApi.isFallback ? 'bg-amber-500' : 'bg-emerald-500 animate-pulse'}`} />
+            <span className="text-stone-600">
+              {aiApi.isFallback ? 'Simulation Mode (Netlify Demo)' : 'Live AI Service'}
+            </span>
+          </div>
+
           <button
             onClick={() => {
               loadMarketData();
@@ -283,21 +291,17 @@ export const AiDemandForecastingPage: React.FC<AiDemandForecastingProps> = ({ on
       </div>
 
       {/* ------------------------------------------------------------------- */}
-      {/* Global Error Banner if API connection fails */}
+      {/* Global Error Banner (Only shown if data cannot be generated at all) */}
       {/* ------------------------------------------------------------------- */}
-      {errorMessage && (
+      {errorMessage && !aiApi.isFallback && (
         <div className="p-4 rounded-2xl bg-amber-50/90 border border-amber-300 text-amber-900 flex items-start justify-between gap-3 shadow-2xs">
           <div className="flex items-start gap-3">
             <AlertCircle className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
             <div>
               <h4 className="text-xs font-bold uppercase tracking-wider text-amber-900">
-                Unable to load market data
+                Notice
               </h4>
               <p className="text-xs text-amber-800 mt-0.5">{errorMessage}</p>
-              <p className="text-[11px] text-amber-700 mt-1">
-                Please check that the FastAPI service is running locally at{' '}
-                <code className="bg-amber-100 px-1 py-0.5 rounded font-mono text-[10px]">http://localhost:8000</code>.
-              </p>
             </div>
           </div>
           <button
